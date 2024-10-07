@@ -1,0 +1,34 @@
+{% extends 'website/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<br>
+<div class="container bg-dark p-5 w-50 ">
+    <h3>Create Record</h3>
+    <h6>Add in the required details</h6>
+
+    <hr>
+    <br>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{create_form|crispy}}
+        <br>
+        <button type="submit" class="btn btn-primary w-20 btn-block p-2" >Create Record &nbsp;<i class="fa fa-check" aria-hidden="true"></i></button>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary w-10 btn-block p-2" >Return &nbsp;<i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+
+    </form>
+
+
+    
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}
