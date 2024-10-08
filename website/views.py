@@ -32,10 +32,11 @@ def my_login(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(request,username = username, password = password)
-
+            messages.success(request,'Login Successful!')
             if user is not None:
                 auth.login(request,user)          
                 return redirect('dashboard')
+            
     
     
     context = {"login_form": form}
@@ -94,3 +95,12 @@ def delete_record(request, pk):
     record.delete()
     messages.success(request,'Record has been deleted!')
     return redirect('dashboard')
+
+@login_required(login_url='my-login')
+def games(request):
+    return render(request, 'website/game.html')
+
+
+@login_required(login_url='my-login')
+def game_data(request):
+    return render(request, 'website/game.html')

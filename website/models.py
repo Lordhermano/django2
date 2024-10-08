@@ -15,3 +15,7 @@ class Record(models.Model):
 
     def __str__(self) -> str:
         return self.first_name + "" + self.last_name
+    
+class GameData(models.Model):
+    game_name = models.CharField(max_length=100)
+    rating = models.IntegerField()    
