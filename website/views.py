@@ -4,7 +4,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Record
+from .models import Record,GameData
 
 
 # Create your views here.
@@ -103,4 +103,7 @@ def games(request):
 
 @login_required(login_url='my-login')
 def game_data(request):
-    return render(request, 'website/game.html')
+
+    data = GameData.objects.all()
+    context = {'data':data}
+    return render(request, 'website/game-data.html',context)
